@@ -57,6 +57,12 @@ namespace AdventOfCode.Solutions
             return string.Join(",", array).ToIntArray(",");
         }
 
+        
+        public static long[] ToLongArray(this string[] array)
+        {
+            return string.Join(",", array).ToLongArray(",");
+        }
+
         public static void WriteLine(object str)
         {
             Console.WriteLine(str);
