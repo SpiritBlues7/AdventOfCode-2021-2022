@@ -34,17 +34,58 @@ namespace AdventOfCode.Solutions
             _part2 = new Lazy<SolutionResult>(() => SolveSafely(SolvePartTwo));
         }
 
-        public IEnumerable<SolutionResult> Solve(int part = 0)
+        public void Solve(int part = 0)
         {
-            if (part != 2 && (part == 1 || !string.IsNullOrEmpty(Part1.Answer)))
+
+            if (Input == null) return;
+
+            bool doOutput = false;
+            string output = $"--- Day {Day}: {Title} --- \n";
+            if (DebugInput != null)
             {
-                yield return Part1;
+                output += $"!!! DebugInput used: {DebugInput}\n";
             }
 
-            if (part != 1 && (part == 2 || !string.IsNullOrEmpty(Part2.Answer)))
+            if (part != 2)
             {
-                yield return Part2;
+                if (!string.IsNullOrEmpty(_part1.Value.Answer))
+                {
+                    output += $"Part 1: {_part1.Value.Answer}\n";
+                    doOutput = true;
+                }
+                else
+                {
+                    output += "Part 1: Unsolved\n";
+                    if (part == 1) doOutput = true;
+                }
             }
+            if (part != 1)
+            {
+                if (!string.IsNullOrEmpty(_part2.Value.Answer))
+                {
+                    output += $"Part 2: {_part2.Value.Answer}\n";
+                    doOutput = true;
+                }
+                else
+                {
+                    output += "Part 2: Unsolved\n";
+                    if (part == 2) doOutput = true;
+                }
+            }
+
+            if (doOutput) Console.WriteLine(output);
+
+            if (!string.IsNullOrWhiteSpace(DebugInput))
+            {
+                Console.WriteLine($"Debug Part 1: {SolvePartOne(DebugInput)}");
+            }
+            Console.WriteLine($"Real Part 1: {SolvePartOne(_input.Value)}");
+
+            if (!string.IsNullOrWhiteSpace(DebugInput))
+            {
+                Console.WriteLine($"Debug Part 2: {SolvePartTwo(DebugInput)}");
+            }
+            Console.WriteLine($"Real Part 2: {SolvePartTwo(_input.Value)}");
         }
 
         SolutionResult SolveSafely(Func<string> SolverFunction)
@@ -82,7 +123,24 @@ namespace AdventOfCode.Solutions
             }
         }
 
-        protected abstract string SolvePartOne();
-        protected abstract string SolvePartTwo();
+        protected virtual string SolvePartOne()
+        {
+            return "";
+        }
+        protected virtual string SolvePartTwo()
+        {
+            return "";
+        }
+
+        protected virtual string SolvePartOne(string input)
+        {
+            return "";
+
+        }
+
+        protected virtual string SolvePartTwo(string input)
+        {
+            return "";
+        }
     }
 }
