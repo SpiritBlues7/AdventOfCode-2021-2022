@@ -67,9 +67,9 @@ namespace AdventOfCode.Solutions.Year2021
                 {
                     counts[j] = counts[j + 1];
                 }
-                //counts[9] = 0;
             }
 
+            counts[9] = 0;
 
             long t = counts.Sum(x => x.Value);
 
