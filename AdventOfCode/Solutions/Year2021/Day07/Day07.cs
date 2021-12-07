@@ -7,7 +7,7 @@ using System.Drawing;
 namespace AdventOfCode.Solutions.Year2021
 {
 
-    class Day00 : ASolution
+    class Day07 : ASolution
     {
 
 
