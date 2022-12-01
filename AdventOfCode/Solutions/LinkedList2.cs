@@ -7,21 +7,27 @@ namespace AdventOfCode.Solutions
 {
     public class LinkedNode
     {
-        public char Value;
+        public int Value;
+        public int Depth;
         public LinkedNode Next;
         public LinkedNode Prev;
 
 
         public LinkedNode()
         {
-            Value = '.';
+            Value = -1;
             Next = null;
         }
 
-        public LinkedNode(char value)
+        public LinkedNode(int value)
         {
             Value = value;
             Next = null;
+        }
+
+        public LinkedNode(int value, int depth) : this(value)
+        {
+            Depth = depth;
         }
     }
 
@@ -36,28 +42,28 @@ namespace AdventOfCode.Solutions
 
         }
 
-        public void Add(char element)
+        public void Add(int element, int depth = -1)
         {
-            LinkedNode node = new LinkedNode();
-            node.Value = element;
+            LinkedNode node = new LinkedNode(element, depth);
+
             node.Next = null;
             if (last == null)
             {
                 header = node;
-                last = node;
                 node.Prev = null;
+                last = node;
             } else
             {
                 last.Next = node;
-                last = node;
                 node.Prev = last;
+                last = node;
             }
 
             currentPos = node;
         }
 
 
-        public void AddafterNode(char newitem, LinkedNode node)
+        public void AddafterNode(int newitem, LinkedNode node)
         {
             LinkedNode newNode = new LinkedNode(newitem);
             LinkedNode nextNode = node.Next;
@@ -83,6 +89,14 @@ namespace AdventOfCode.Solutions
         public LinkedNode GetLast()
         {
             return last;
+        }        
+        public void SetLast(LinkedNode node)
+        {
+            last = node;
+        }    
+        public void SetHead(LinkedNode node)
+        {
+            header = node;
         }
     }
 }
