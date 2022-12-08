@@ -14,6 +14,8 @@ namespace AdventOfCode.Solutions
         public List<Node> AllChildNodes { get; set; } = new List<Node>();
         public int ParentDepth { get; set; }
         public int ChildDepth { get; set; }
+        public long Value { get; set; } = 0;
+
 
     }
     public static class NodeUtilities
