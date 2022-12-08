@@ -77,7 +77,7 @@ namespace AdventOfCode.Solutions
             var firstLevelProcessing = InputTo1dString(input, firstDelimiters, 1, shouldTrim);
             foreach (var item in firstLevelProcessing)
             {
-                retval.Add(InputTo1dLong(item, secondDelimiters, groupCount, shouldTrim, asDigits, filterRemainingCharacter));
+                retval.Add(InputTo1dLong(item, new List<string>(secondDelimiters), groupCount, shouldTrim, asDigits, filterRemainingCharacter));
             }
             return retval;
         }
@@ -133,7 +133,7 @@ namespace AdventOfCode.Solutions
             var firstLevelProcessing = InputTo1dString(input, firstDelimiters, 1, shouldTrim);
             foreach (var item in firstLevelProcessing)
             {
-                retval.Add(InputTo1dString(item, secondDelimiters, groupCount, shouldTrim));
+                retval.Add(InputTo1dString(item, new List<string>(secondDelimiters), groupCount, shouldTrim));
             }
             return retval;
         }
@@ -206,7 +206,7 @@ namespace AdventOfCode.Solutions
             var firstLevelProcessing = InputTo1dString(input, firstDelimiters, 1, shouldTrim);
             foreach (var item in firstLevelProcessing)
             {
-                retval.Add(InputTo1dDecimal(item, secondDelimiters, groupCount, shouldTrim, asDigits, filterRemainingCharacter));
+                retval.Add(InputTo1dDecimal(item, new List<string>(secondDelimiters), groupCount, shouldTrim, asDigits, filterRemainingCharacter));
             }
             return retval;
         }
