@@ -23,18 +23,12 @@ namespace AdventOfCode.Solutions.Year2022
             long total = 0;
             foreach (string line in lines)
             {
-                string[] components = line.Split(",");
-                string first = components[0];
-                string second = components[1];
+                List<List<long>> components = Better.InputTo2dLong(line, new List<string>{","}, new List<string> { "-" }, 1);
 
-                string[] firstComp = first.Split("-");
-                string[] secondComp = second.Split("-");
-
-                int first_first = int.Parse(firstComp[0]);
-                int first_second = int.Parse(firstComp[1]);
-
-                int second_first = int.Parse(secondComp[0]);
-                int second_second = int.Parse(secondComp[1]);
+                long first_first = components[0][0];
+                long first_second = components[0][1];
+                long second_first = components[1][0];
+                long second_second = components[1][1];
 
                 if (first_first <= second_first && first_second >= second_second)
                 {
@@ -59,18 +53,13 @@ namespace AdventOfCode.Solutions.Year2022
             long total = 0;
             foreach (string line in lines)
             {
-                string[] components = line.Split(",");
-                string first = components[0];
-                string second = components[1];
+                List<List<long>> components = Better.InputTo2dLong(line, new List<string> { "," }, new List<string> { "-" }, 1);
 
-                string[] firstComp = first.Split("-");
-                string[] secondComp = second.Split("-");
+                long first_first = components[0][0];
+                long first_second = components[0][1];
+                long second_first = components[1][0];
+                long second_second = components[1][1];
 
-                int first_first = int.Parse(firstComp[0]);
-                int first_second = int.Parse(firstComp[1]);
-
-                int second_first = int.Parse(secondComp[0]);
-                int second_second = int.Parse(secondComp[1]);
 
                 if (first_first <= second_first && first_second >= second_first)
                 {
