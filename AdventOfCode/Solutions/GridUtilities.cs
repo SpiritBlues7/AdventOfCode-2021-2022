@@ -457,7 +457,10 @@ namespace AdventOfCode.Solutions
         public int number = '0';
         public char character = '.';
         public long distance = 0;
-
+        public bool start = false;
+        public bool end = false;
+        public bool visited = false;
+        public long bestPriority = int.MaxValue;
         public Dictionary<char, int> distances = new Dictionary<char, int>();
     }
 
