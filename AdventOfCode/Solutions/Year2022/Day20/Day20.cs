@@ -55,7 +55,7 @@ namespace AdventOfCode.Solutions.Year2022
             LinkedNode curr = zeroVal;
             for (int j = 1; j <= 3000; j++)
             {
-                curr = curr.Next ?? llist.Head;
+                curr = curr.Next;
                 if (j % 1000 == 0)
                 {
                     total += curr.Value;
@@ -110,7 +110,7 @@ namespace AdventOfCode.Solutions.Year2022
             LinkedNode curr = zeroVal;
             for (int j = 1; j <= 3000; j++)
             {
-                curr = curr.Next ?? llist.Head;
+                curr = curr.Next;
                 if (j % 1000 == 0)
                 {
                     total += curr.Value;
