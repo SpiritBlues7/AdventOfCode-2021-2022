@@ -18,9 +18,9 @@ namespace AdventOfCode.Solutions.Year2021
         }
 
 
-        private LinkedList2 InitialSetup(string line)
+        private LinkedListOld InitialSetup(string line)
         {
-            LinkedList2 nodes = new LinkedList2();
+            LinkedListOld nodes = new LinkedListOld();
 
 
             int depth = 0;
@@ -57,11 +57,11 @@ namespace AdventOfCode.Solutions.Year2021
         }
 
 
-        private List<LinkedNode> GetSplitsAndExplodes(LinkedList2 nodes)
+        private List<LinkedNodeOld> GetSplitsAndExplodes(LinkedListOld nodes)
         {
-            List<LinkedNode> explodesAndSplits = new List<LinkedNode>();
+            List<LinkedNodeOld> explodesAndSplits = new List<LinkedNodeOld>();
             nodes.ResetHead();
-            LinkedNode node = nodes.GetHead();
+            LinkedNodeOld node = nodes.GetHead();
             while (true)
             {
                 Assert.IsTrue(node.Value >= 0, "element not in range: " + node.Value);
@@ -86,10 +86,10 @@ namespace AdventOfCode.Solutions.Year2021
             return explodesAndSplits;
         }
 
-        private void Explode(LinkedList2 nodes, LinkedNode nodeOne, LinkedNode nodeTwo, List<LinkedNode> explodesAndSplits, int currentIndex)
+        private void Explode(LinkedListOld nodes, LinkedNodeOld nodeOne, LinkedNodeOld nodeTwo, List<LinkedNodeOld> explodesAndSplits, int currentIndex)
         {
-            LinkedNode prevNode = nodeOne.Prev;
-            LinkedNode nextNode = nodeTwo.Next;
+            LinkedNodeOld prevNode = nodeOne.Prev;
+            LinkedNodeOld nextNode = nodeTwo.Next;
             if (prevNode != null)
             {
                 prevNode.Value = prevNode.Value + nodeOne.Value;
@@ -154,14 +154,14 @@ namespace AdventOfCode.Solutions.Year2021
 
         }
 
-        private void SplitNodes(LinkedList2 nodes, LinkedNode node, List<LinkedNode> explodesAndSplits, int currentIndex)
+        private void SplitNodes(LinkedListOld nodes, LinkedNodeOld node, List<LinkedNodeOld> explodesAndSplits, int currentIndex)
         {
-            LinkedNode nextNode = node.Next;
+            LinkedNodeOld nextNode = node.Next;
 
             int newNodeDepth = node.Depth + 1;
-            int newNodeOneValue = node.Value / 2;
+            int newNodeOneValue = (int) node.Value / 2;
             int newNodeTwoValue = (int)Math.Ceiling((Decimal)node.Value / (Decimal)2);
-            LinkedNode newNodeTwo = new LinkedNode(newNodeTwoValue, newNodeDepth);
+            LinkedNodeOld newNodeTwo = new LinkedNodeOld(newNodeTwoValue, newNodeDepth);
             node.Value = newNodeOneValue;
             node.Depth = newNodeDepth;
 
@@ -194,13 +194,13 @@ namespace AdventOfCode.Solutions.Year2021
             }
         }
 
-        private void SplitsAndExplodes(LinkedList2 nodes, List<LinkedNode> splitsAndExplodes)
+        private void SplitsAndExplodes(LinkedListOld nodes, List<LinkedNodeOld> splitsAndExplodes)
         {
 
-            LinkedNode nodeExplodeOne = null;
+            LinkedNodeOld nodeExplodeOne = null;
             for (int i = 0; i < splitsAndExplodes.Count; i++) 
             {
-                LinkedNode node = splitsAndExplodes[i];
+                LinkedNodeOld node = splitsAndExplodes[i];
                 if (node.Value == -1)
                 {
                     continue;
@@ -210,7 +210,7 @@ namespace AdventOfCode.Solutions.Year2021
                 // Explode
                 if (node.Depth == 5)
                 {
-                    LinkedNode nodeExplodeTwo;
+                    LinkedNodeOld nodeExplodeTwo;
                     if (nodeExplodeOne == null)
                     {
                         nodeExplodeOne = node;
@@ -231,7 +231,7 @@ namespace AdventOfCode.Solutions.Year2021
 
             for (int i = 0; i < splitsAndExplodes.Count; i++)
             {
-                LinkedNode node = splitsAndExplodes[i];
+                LinkedNodeOld node = splitsAndExplodes[i];
                 if (node.Value == -1)
                 {
                     continue;
@@ -254,10 +254,10 @@ namespace AdventOfCode.Solutions.Year2021
         }
 
 
-        private void incrementDepths(LinkedList2 nodes)
+        private void incrementDepths(LinkedListOld nodes)
         {
             nodes.ResetHead();
-            LinkedNode node = nodes.GetHead();
+            LinkedNodeOld node = nodes.GetHead();
             while (true)
             {
                 node.Depth = node.Depth + 1;
@@ -283,7 +283,7 @@ namespace AdventOfCode.Solutions.Year2021
 
 
 
-            LinkedList2 currentNodes = initialNodes;
+            LinkedListOld currentNodes = initialNodes;
             //PrintNodes(currentNodes);
             for (int i = 0; i < lines.Count(); i++)
             {
@@ -327,12 +327,12 @@ namespace AdventOfCode.Solutions.Year2021
             return currentNodes.GetHead().Value.ToString();
         }
 
-        private static void PrintNodes(LinkedList2 currentNodes)
+        private static void PrintNodes(LinkedListOld currentNodes)
         {
             Console.WriteLine("#################");
 
             currentNodes.ResetHead();
-            LinkedNode node = currentNodes.GetHead();
+            LinkedNodeOld node = currentNodes.GetHead();
             while (true)
             {
                 
@@ -375,7 +375,7 @@ namespace AdventOfCode.Solutions.Year2021
                     var initialSplitsAndExplodes = GetSplitsAndExplodes(initialNodes);
                     SplitsAndExplodes(initialNodes, initialSplitsAndExplodes);
 
-                    LinkedList2 currentNodes = initialNodes;
+                    LinkedListOld currentNodes = initialNodes;
 
 
 
@@ -423,19 +423,19 @@ namespace AdventOfCode.Solutions.Year2021
             return best.ToString();
         }
 
-        private static void collapse(LinkedList2 currentNodes)
+        private static void collapse(LinkedListOld currentNodes)
         {
             int depth = 5;
             for (int i = depth; i >= 0; i--)
             {
-                LinkedNode firstItem = null;
+                LinkedNodeOld firstItem = null;
                 currentNodes.ResetHead();
-                LinkedNode node = currentNodes.GetHead();
+                LinkedNodeOld node = currentNodes.GetHead();
                 while (true)
                 {
                     if (node.Depth == i)
                     {
-                        LinkedNode secondItem = null;
+                        LinkedNodeOld secondItem = null;
                         if (firstItem == null)
                         {
                             firstItem = node;
@@ -444,7 +444,7 @@ namespace AdventOfCode.Solutions.Year2021
                         {
                             secondItem = node;
 
-                            LinkedNode nextNode = secondItem.Next;
+                            LinkedNodeOld nextNode = secondItem.Next;
 
                             firstItem.Value = firstItem.Value * 3 + secondItem.Value * 2;
                             firstItem.Next = nextNode;
