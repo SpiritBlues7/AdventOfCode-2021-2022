@@ -1,12 +1,80 @@
 
+    Ctrl + Alt + click : Add a secondary caret
+    Ctrl + Alt + double-click : Add a secondary word selection
+    Ctrl + Alt + click + drag : Add a secondary selection
+    Shift + Alt + . : Add the next matching text as a selection
+    Shift + Alt + ; : Add all matching text as selections
+    Shift + Alt + , : Remove last selected occurrence
+    Shift + Alt + / : Skip next matching occurrence
+    Alt + click : Add a box selection
+    Esc or click : Clear all selections
+
+ctr k and ctr c or ctr u
+ctr k and ctr s is surround with block
+tab tab auto complete
+cw tab tab to console write
+
+List<List<long>> components = Better.InputTo2dLong(line, new List<string> { "," }, new List<string> { "-" }, 1);
+
+var queryLondonCustomers3 =
+    from cust in customers
+    where cust.City == "London"
+    orderby cust.Name ascending
+    select cust;
+
+
+var custQuery =
+    from cust in customers
+    group cust by cust.City into custGroup
+    where custGroup.Count() > 2
+    orderby custGroup.Key
+    select custGroup;
+
+    years = g.GroupBy(y=> y.Date.Year)
+            .OrderBy(y=> y.Key)
+            .Select(y=> y.Sum(y.funds))
+            .ToList();
+
+manual process input
+hashmap
+negates
+sets
+intersection
+union
+3128
+AAIIJJJJIIAADDEEEEDDAABBBBCCDDEEEEDDCCBBBBCCDDEEEEDDCCBBBBCCDDEEFFGG
+
+List<int> totals = new List<int>();
+List<(List<(int, bool)>, bool)> boards = new List<(List<(int, bool)>, bool)>();
 Lines = Input.SplitByNewline().ToLongArray();
 
+Dictionary<long, long> grouping = new Dictionary<long, long>();
+HashSet<double> Distances = new HashSet<double>();
+dict123.Add(scanner, overlap);
+
+Stack<string> st = new Stack<string>();
+
+ContainsValue
+if(map.ContainsKey(key))
+{
+      // Do something
+}
+
+input = input.Replace("\r\n", "\n");
+
+int total = monValues.Sum(x => Convert.ToInt32(x));
+
+integerList.Last()
 
 for (int i = 0; i < Lines.Length; i++)
 {
 
 }
 
+foreach (KeyValuePair<int,long> keyValue in VAR)
+{
+    
+}
 
 switch (VALUE) {
 	case a:
@@ -23,27 +91,11 @@ counts[i] = Lines.Count(x => x == i);
 
 counts.Sum(x => x.Value);
 
-foreach (KeyValuePair<int,long> keyValue in VAR)
-{
-    
-}
+547
+3395
+3273
 
 
-After  1 day:  2,3,2,0,1
-After  2 days: 1,2,1,6,0,8
-After  3 days: 0,1,0,5,6,7,8
-After  4 days: 6,0,6,4,5,6,7,8,8
-After  5 days: 5,6,5,3,4,5,6,7,7,8
-After  6 days: 4,5,4,2,3,4,5,6,6,7
-After  7 days: 3,4,3,1,2,3,4,5,5,6
-After  8 days: 2,3,2,0,1,2,3,4,4,5
-After  9 days: 1,2,1,6,0,1,2,3,3,4,8
-After 10 days: 0,1,0,5,6,0,1,2,2,3,7,8
-After 11 days: 6,0,6,4,5,6,0,1,1,2,6,7,8,8,8
-After 12 days: 5,6,5,3,4,5,6,0,0,1,5,6,7,7,7,8,8
-After 13 days: 4,5,4,2,3,4,5,6,6,0,4,5,6,6,6,7,7,8,8
-After 14 days: 3,4,3,1,2,3,4,5,5,6,3,4,5,5,5,6,6,7,7,8
-After 15 days: 2,3,2,0,1,2,3,4,4,5,2,3,4,4,4,5,5,6,6,7
-After 16 days: 1,2,1,6,0,1,2,3,3,4,1,2,3,3,3,4,4,5,5,6,8
-After 17 days: 0,1,0,5,6,0,1,2,2,3,0,1,2,2,2,3,3,4,4,5,7,8
-After 18 days: 6,0,6,4,5,6,0,1,1,2,6,0,1,1,1,2,2,3,3,4,6,7,8,8,8,8
+7461
+
+6567
